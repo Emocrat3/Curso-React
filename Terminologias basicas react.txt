@@ -1,0 +1,9 @@
+Para crear clases en react se usa className.
+Pecurialidad componentes, no deja meter 2 etiquetas, pero se puede solucionar
+ingresando un <React.Fragment> o metiendo las etiquetas en un div.
+
+El map() se utiliza para recorrer un array y sacar los datos.
+La key={} se utiliza para que identifique los elementos en caso de actualizarlo
+y sea dinamico.
+
+
