@@ -6,4 +6,4 @@ El map() se utiliza para recorrer un array y sacar los datos.
 La key={} se utiliza para que identifique los elementos en caso de actualizarlo
 y sea dinamico.
 
-
+los comentarios en JSX se hacen con {/* MENU */}
