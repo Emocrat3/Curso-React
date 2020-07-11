@@ -7,3 +7,43 @@ La key={} se utiliza para que identifique los elementos en caso de actualizarlo
 y sea dinamico.
 
 los comentarios en JSX se hacen con {/* MENU */}
+El state son esas propiedades que se van a mostrar en la vista y actualizar 
+dinamicamente.
+En el State se puede guardar objetos, coleccion de objetos, numeros, etc:
+Se puede definir solo asi 
+
+    state = {
+        contador: 0
+    };
+
+Fuera del render
+
+Formas alternativas para declarar metodos en las clases del componente.
+
+Con una funcion de flecha, para quitar el .bind(this) del onClick
+<input type="button" value="Sumar" onClick={this.sumar}
+
+Ejemplo antes: 
+Para usar bind 
+
+    sumar(e){
+
+        this.setState({
+            contador: (this.state.contador + 1)
+        });
+    }
+
+Para no usarlo 
+    sumar= (e) => {
+
+        this.setState({
+            contador: (this.state.contador + 1)
+        });
+    }
+
+
+Props se le puede pasar cualquier propiedad al componente llamado en la clase padre
+y en el componente hijo, se puede imprimir asi {this.props.nombreDelProps}
+Es un input. 
+Tambien se pueden pasar datos del componente hijo al padre. 
+

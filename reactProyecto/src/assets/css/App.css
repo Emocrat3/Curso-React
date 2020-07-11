@@ -181,6 +181,20 @@ body {
   margin-top: 10px;
 }
 
+.sidebar-item .fa-linkedin{
+  font-size: 4em;
+  border-radius:5px;
+  color: #0085AE;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+.sidebar-item .fa-github{
+  font-size: 4em;
+  color: black;
+
+}
+
 .btn{
  display: block;
  background: black;
