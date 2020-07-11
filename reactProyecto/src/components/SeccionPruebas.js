@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from '../assets/images/logo.svg';
 
 import MiComponente from './MiComponente';
-import Peliculas from './Peliculas';
+
 class SeccionPruebas extends Component {
 
     contador = 0;
@@ -63,7 +63,7 @@ class SeccionPruebas extends Component {
                 <section className="componentes">
 
                     <MiComponente />
-                    <Peliculas />
+
                 </section>
 
                 <h2 className="subheader">Estado</h2>

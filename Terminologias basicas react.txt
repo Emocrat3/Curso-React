@@ -47,3 +47,4 @@ y en el componente hijo, se puede imprimir asi {this.props.nombreDelProps}
 Es un input. 
 Tambien se pueden pasar datos del componente hijo al padre. 
 
+Importancia de pasar la Key como atributo a una etiqueta cuando se hace un bucle.
