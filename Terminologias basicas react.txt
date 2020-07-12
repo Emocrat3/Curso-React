@@ -67,3 +67,49 @@ mostrara cuando este en la ruta indicada.
 funcione y muestre el componente debido.
 Si no le coloco el exact, todo lo que comience con / cargara el primer componente y lo que se necesita 
 es que cargue la ruta exacta indicada.
+
+Para la ruta error, se coloca al final asi <Route component = {Error} /> y el componente se importa solo con
+import React from 'react'; al crearse.. Luego se muestra todo.
+
+Una ruta puede no usar un componente y puede usar render con un callback y puede colocar cualquier cosa en JSX,
+props etc. Esto tiene mas flexibilidad y eso se mostrara en la ruta.
+
+Para en una ruta hacer mas funciones de JavaScript y poder coger los parametros de la URL se hace asi
+
+<Route exact path="/pruebas/:nombre/:apellidos?" render={(props) => {
+                        var nombre = props.match.params.nombre;
+                        var apellidos = props.match.params.apellidos;
+                        return (
+                            <div id="content">
+                                <h1 className="subheader">Página de pruebas</h1>
+                                <h2>
+                                    Si existe uno solo, lo muestra
+
+                                    {nombre && !apellidos &&
+                                        <React.Fragment>{nombre}</React.Fragment>
+                                    }
+
+                                    Si existen los dos, los muestra
+
+                                    {nombre && apellidos &&
+                                        <React.Fragment>{nombre} {apellidos}</React.Fragment>
+                                    }
+
+                                </h2>
+                            </div>
+                        );
+                    }
+                    } />
+Y lo que pase por el url se imprimira en esa ruta.
+
+Para que dirija a rutas los botones del menu, usamos import { NavLink } from 'react-router-dom'; y se sustituye 
+<NavLink to="/">Inicio</NavLink> asi llevara  a la primera ruta definida que es la home.
+
+Para que eso funcione nos tenemos que llevar las importaciones del app.js al Router, porque tiene que estar dentro
+del BrowserRouter.
+
+Para que el slider se adapte dependiendo en que componente este, hay que enviar una props con size que indica si es
+small o big y en su componente le agrego <div id="slider" className={this.props.size}>
+
+Y en el sidebar para que muestre puedes hacer esto, que es crear el articulo hay que estar dentro de blog, ya que tiene
+un if this.props.blog == "true" && que si le llega esa props en true, muestre el codigo.

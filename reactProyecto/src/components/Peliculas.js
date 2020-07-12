@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Pelicula from './Pelicula';
+import Slider from './Slider';
+import Sidebar from './Sidebar';
 
 class Peliculas extends Component {
 
@@ -44,7 +46,7 @@ class Peliculas extends Component {
         });
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.setState({
             peliculas: [
                 { titulo: 'Mi vecino Totoro', image: 'https://i.ytimg.com/vi/qMZFau7LZUA/maxresdefault.jpg' },
@@ -64,47 +66,59 @@ class Peliculas extends Component {
         };
 
         return (
-            <div id="content" className="peliculas">
+            <React.Fragment>
+                <Slider
+                    title="Peliculas"
+                    size="slider-small"
+                />
 
-                <h2 className="subheader">Peliculas</h2>
-                <p>Seleccion de las peliculas favoritas de {this.state.nombre} por el Studio GHIBLI</p>
+                <div className="center">
+                    <div id="content" className="peliculas">
 
-                <p>
-                    <button onClick={this.cambiarTitulo} style={{ marginRight: '10px' }}>¡En inglés!</button>
-                    <button onClick={this.cambiarTituloJapon} style={{ marginRight: '10px' }}>¡En japones!</button>
-                    <button onClick={this.cambiarTituloEspanol} style={{ marginRight: '10px' }}>¡Devolver a español!</button>
-                </p>
+                        <h2 className="subheader">Listado de peliculas</h2>
+                        <p>Seleccion de las peliculas favoritas de {this.state.nombre} por el Studio GHIBLI</p>
 
-                {
-                    this.state.favorita.titulo ? (
-                    <p className="favorita" style={pStyle}>
-                        <strong>La pelicula favorita es: </strong>
-                        <span>{this.state.favorita.titulo}</span>
-                    </p>
-                    ) : (
-                        <p>NO HA SELECCIONADO PELICULA FAVORITA</p>
-                    )
-                }
+                        <p>
+                            <button onClick={this.cambiarTitulo} style={{ marginRight: '10px' }}>¡En inglés!</button>
+                            <button onClick={this.cambiarTituloJapon} style={{ marginRight: '10px' }}>¡En japones!</button>
+                            <button onClick={this.cambiarTituloEspanol} style={{ marginRight: '10px' }}>¡Devolver a español!</button>
+                        </p>
 
-                <div id="articles" className="peliculas">
-                    {
-                        this.state.peliculas.map((pelicula, i) => {
-                            return (
+                        {
+                            this.state.favorita.titulo ? (
+                                <p className="favorita" style={pStyle}>
+                                    <strong>La pelicula favorita es: </strong>
+                                    <span>{this.state.favorita.titulo}</span>
+                                </p>
+                            ) : (
+                                    <p>NO HA SELECCIONADO PELICULA FAVORITA</p>
+                                )
+                        }
 
-                                <Pelicula
-                                    key={i}
-                                    pelicula={pelicula}
-                                    indice= {i}
-                                    marcarFavorita={this.favorita}
-                                />
+                        <div id="articles" className="peliculas">
+                            {
+                                this.state.peliculas.map((pelicula, i) => {
+                                    return (
 
-                            )
+                                        <Pelicula
+                                            key={i}
+                                            pelicula={pelicula}
+                                            indice={i}
+                                            marcarFavorita={this.favorita}
+                                        />
 
-                        })
-                    }
+                                    )
 
+                                })
+                            }
+
+                        </div>
+                    </div>
+                    <Sidebar
+                        blog="false"
+                    />
                 </div>
-            </div>
+            </React.Fragment>
         );
     }
 }
