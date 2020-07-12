@@ -3,15 +3,7 @@ import Pelicula from './Pelicula';
 
 class Peliculas extends Component {
 
-    state = {
-        peliculas: [
-            { titulo: 'Mi vecino Totoro', image: 'https://i.ytimg.com/vi/qMZFau7LZUA/maxresdefault.jpg' },
-            { titulo: 'El castillo ambulante', image: 'https://i.ytimg.com/vi/kjV5-_Z_Uys/maxresdefault.jpg' },
-            { titulo: 'La princesa Mononoke', image: 'https://elbauldelasopiniones.files.wordpress.com/2014/03/princesse_mononoke_front1.jpg' }
-        ],
-        nombre: 'Arthuro Gomez',
-        favorita: {}
-    }
+    state = {};
 
     cambiarTitulo = () => {
         var { peliculas } = this.state;
@@ -52,12 +44,25 @@ class Peliculas extends Component {
         });
     }
 
+    componentWillMount(){
+        this.setState({
+            peliculas: [
+                { titulo: 'Mi vecino Totoro', image: 'https://i.ytimg.com/vi/qMZFau7LZUA/maxresdefault.jpg' },
+                { titulo: 'El castillo ambulante', image: 'https://i.ytimg.com/vi/kjV5-_Z_Uys/maxresdefault.jpg' },
+                { titulo: 'La princesa Mononoke', image: 'https://elbauldelasopiniones.files.wordpress.com/2014/03/princesse_mononoke_front1.jpg' }
+            ],
+            nombre: 'Arthuro Gomez',
+            favorita: {}
+        });
+    }
+
     render() {
         var pStyle = {
             background: 'green',
             color: 'white',
             padding: '10px'
         };
+
         return (
             <div id="content" className="peliculas">
 
@@ -71,11 +76,14 @@ class Peliculas extends Component {
                 </p>
 
                 {
-                    this.state.favorita.titulo &&
+                    this.state.favorita.titulo ? (
                     <p className="favorita" style={pStyle}>
                         <strong>La pelicula favorita es: </strong>
                         <span>{this.state.favorita.titulo}</span>
                     </p>
+                    ) : (
+                        <p>NO HA SELECCIONADO PELICULA FAVORITA</p>
+                    )
                 }
 
                 <div id="articles" className="peliculas">

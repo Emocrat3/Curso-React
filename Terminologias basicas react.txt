@@ -48,3 +48,22 @@ Es un input.
 Tambien se pueden pasar datos del componente hijo al padre. 
 
 Importancia de pasar la Key como atributo a una etiqueta cuando se hace un bucle.
+
+el component willmount, se puede montar algo y el component didmount es cuando ya esta arriba, y se pueden colocar 
+fuera del state, seteandoselo en la funcion setState y declarando el state vacio. 
+
+Libreria de rutas npm install --save react-router-dom 
+
+Para crear las rutas, se crea un archivo en el src, se hace como un componente normal, pero se importa 
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
+
+Luego se usan dentro del return el BrowserRouter y dentro el Switch que ahi van todas las rutas a usar.
+Se crea una etiqueta Route y dentro se coloca el path con el nombre de la ruta y luego se importa el 
+componente que se van a mostrar, y se llama con la etiqueta component={EjemploRuta}.
+Luego en el app.js se importa el Router con import Router from './Router'; y luego se llama donde se 
+mostrara cuando este en la ruta indicada. 
+
+<Route exact path="/" component={PRUEBA} /> se coloca el exact para que todo lo que vaya despues de la / 
+funcione y muestre el componente debido.
+Si no le coloco el exact, todo lo que comience con / cargara el primer componente y lo que se necesita 
+es que cargue la ruta exacta indicada.
