@@ -113,3 +113,17 @@ small o big y en su componente le agrego <div id="slider" className={this.props.
 
 Y en el sidebar para que muestre puedes hacer esto, que es crear el articulo hay que estar dentro de blog, ya que tiene
 un if this.props.blog == "true" && que si le llega esa props en true, muestre el codigo.
+
+Para recoger datos del formulario, se usa el ref, el cual se implementa asi ejemploRef = React.createRef(); 
+y luego se le pasa por el input asi <input type="text" name="ejemplo"  ref={this.ejemploRef} />
+
+y en vez de usar for en el label, se usa htmlFor ejemplo:<label htmlFor="Ejemplo">Ejemplo</label>
+
+Para ver si se esta guardando todo, se puede hacer un console log al ref, ejemplo console.log(this.ejemploRef.current.value);
+
+El onChange es para ver de forma reactiva los cambios que se hacen. ejemplo en el formulario que toma 
+  <form className="mid-form" onSubmit={this.recibirFormulario} onChange={this.recibirFormulario}> 
+  y va mostrando cada cosa que se va escribiendo.
+
+  Para hacer peticiones AJAX se usa npm install --save axios y se importa en el componente a usar 
+  con import axios from 'axios';

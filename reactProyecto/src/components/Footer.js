@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 const Footer = () => {
     return (
         <footer id="footer">
-            <div class="center">
+            <div className="center">
                 <p>
                     &copy; Desarrollado por Arthuro Gomez
             </p>
