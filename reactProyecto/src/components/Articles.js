@@ -12,17 +12,14 @@ class Articles extends Component {
 
     getArticles = () => {
         axios.get("https://arthuro-gomez-react.netlify.app/api/articles")
-        .then(res =>{
-            const data = res.data;//to save your data response
-            console.log("----SETTING DATA-----")
-            console.log(data)//to see your data response
-            this.setState({articles}) //to set your data response
+            .then(res => {
+                this.setState({
+                    articles: res.data.articles,
+                    status: 'success'
+                });
+             });
+        }
     
-            console.log("++++++ALL DATA WAS SETTING++++++")
-        }).catch(err=>{
-            console.log(err)
-        })
-    }
 
     render() {
         console.log(this.state.articles)
