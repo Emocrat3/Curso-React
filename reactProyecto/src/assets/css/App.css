@@ -279,6 +279,11 @@ input[type="submit"]{
   margin-top: 15px;
 }
 
+.thumb{
+  width: 170px;
+  float: left;
+  display: block;
+}
 
 .radibuttons{
   margin-top: 10px;

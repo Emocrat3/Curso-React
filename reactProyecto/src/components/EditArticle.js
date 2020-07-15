@@ -5,13 +5,22 @@ import Global from '../Global';
 import Sidebar from './Sidebar';
 import SimpleReactValidator from 'simple-react-validator';
 import swal from 'sweetalert';
+import ImageDefault from '../assets/images/default.jpg';
 
-// Validacion de formularios y alertas
 
-class CreateArticle extends Component {
+// Recoger el ID del articulo a editar de la URL 
+
+// Crear un metodo para sacar el objeto del api 
+
+// Rellenar el formulario con esos datos
+
+// Actualizar el objeto haciendo una peticion al backend
+
+class EditArticle extends Component {
     url = Global.url;
     titleRef = React.createRef();
     contentRef = React.createRef();
+    articleId = null;
 
     state = {
         article: {},
@@ -20,6 +29,8 @@ class CreateArticle extends Component {
     };
 
     componentWillMount() {
+        this.articleId = this.props.match.params.id;
+        this.getArticle(this.articleId);
         this.validator = new SimpleReactValidator({
             messages: {
                 required: 'Este campo es requerido.'
@@ -27,11 +38,21 @@ class CreateArticle extends Component {
         });
     }
 
+    getArticle = (id) => {
+        axios.get(this.url + 'article/' + id)
+            .then(res => {
+                this.setState({
+                    article: res.data.article
+                })
+            });
+    }
+
     changeState = () => {
         this.setState({
             article: {
                 title: this.titleRef.current.value,
-                content: this.contentRef.current.value
+                content: this.contentRef.current.value,
+                image: this.state.article.image
             }
         });
         this.validator.showMessages();
@@ -47,7 +68,7 @@ class CreateArticle extends Component {
         if (this.validator.allValid()) {
             // Hacer una peticion por post para guardar el articulo
 
-            axios.post(this.url + 'save', this.state.article)
+            axios.put(this.url + 'article/'+ this.articleId, this.state.article)
                 .then(res => {
 
                     if (res.data.article) {
@@ -57,8 +78,8 @@ class CreateArticle extends Component {
                         });
 
                         swal(
-                            'Articulo creado',
-                            'El articulo ha sido creado correctamente',
+                            'Articulo modificado',
+                            'El articulo ha sido modificado correctamente',
                             'success'
                         )
 
@@ -94,7 +115,7 @@ class CreateArticle extends Component {
 
                                         swal(
                                             'ERROR',
-                                            'Fallo en crear el articulo, intentalo de nuevo.',
+                                            'Fallo al modificar el articulo, intentalo de nuevo.',
                                             'error'
                                         )
                                     }
@@ -137,36 +158,56 @@ class CreateArticle extends Component {
 
         }
 
+        var article = this.state.article;
         return (
             <div className="center">
                 <section id="content">
 
-                    <h1 className="subheader">Crear articulo</h1>
+                    <h1 className="subheader">Editar articulo</h1>
 
-                    <form className="mid-form" onSubmit={this.saveArticle}>
+                    {this.state.article.title &&
 
-                        <div className="form-group">
-                            <label htmlFor="title">Titulo</label>
-                            <input type="text" name="title" ref={this.titleRef} onChange={this.changeState} />
+                        <form className="mid-form" onSubmit={this.saveArticle}>
 
-                            {this.validator.message('title', this.state.article.title, 'required|alpha_num_space')}
-                        </div>
+                            <div className="form-group">
+                                <label htmlFor="title">Titulo</label>
+                                <input type="text" name="title" defaultValue={article.title} ref={this.titleRef} onChange={this.changeState} />
 
-                        <div className="form-group">
-                            <label htmlFor="content">Contenido</label>
-                            <textarea name="content" ref={this.contentRef} onChange={this.changeState}></textarea>
+                                {this.validator.message('title', this.state.article.title, 'required|alpha_num_space')}
+                            </div>
 
-                            {this.validator.message('content', this.state.article.content, 'required')}
-                        </div>
+                            <div className="form-group">
+                                <label htmlFor="content">Contenido</label>
+                                <textarea name="content" defaultValue={article.content} ref={this.contentRef} onChange={this.changeState}></textarea>
 
-                        <div className="form-group">
-                            <label htmlFor="file0">Imagen</label>
-                            <input type="file" name="file0" onChange={this.fileChange} />
-                        </div>
+                                {this.validator.message('content', this.state.article.content, 'required')}
+                            </div>
 
-                        <input type="submit" value="Guardar" className="btn btn-success" />
+                            <div className="form-group">
+                                <label htmlFor="file0">Imagen</label>
+                                <input type="file" name="file0" onChange={this.fileChange} />
 
-                    </form>
+                                <div className="image-wrap">
+                                    {article.image !== null ? (
+                                        <img src={this.url + 'get-image/' + article.image} alt={article.title} className="thumb"/>
+                                    ) : (
+                                            <img src={ImageDefault} alt={article.title} className="thumb"/>
+                                        )
+
+                                    }
+                                </div>
+                            </div>
+
+                            <div className="clearfix"></div>
+                            <input type="submit" value="Guardar" className="btn btn-success" />
+
+                        </form>
+
+                    }
+
+                    {!this.state.article.title &&
+                        <img src="https://pa1.narvii.com/6707/510b0daee67fbc091f14b9d8ef40aeb6c0d4dc7d_hq.gif" />
+                    }
 
                 </section>
 
@@ -176,4 +217,4 @@ class CreateArticle extends Component {
     }
 }
 
-export default CreateArticle;
+export default EditArticle;

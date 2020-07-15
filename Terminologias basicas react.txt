@@ -131,3 +131,11 @@ El onChange es para ver de forma reactiva los cambios que se hacen. ejemplo en e
   la libreria de fecha hay que descargar la libreria npm install --save react-moment y tambien el moment para que funcione
 El link se utiliza asi  <Link to={'/blog/crear'} className="btn btn-success">Crear artículo</Link> para al dar click redireccione
 a esta ruta que esta creada en mis rutas.
+
+Para instalar la libreria de validacion de React la cual es muy importante es npm install --save simple-react-validator
+
+import SimpleReactValidator from 'simple-react-validator';
+
+Para las alertas bonitas descargar libreria sweet, con npm install --save sweetalert
+
+Para rellenar campos con datos ya agregados usar defaultValue para los put
