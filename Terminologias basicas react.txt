@@ -127,3 +127,5 @@ El onChange es para ver de forma reactiva los cambios que se hacen. ejemplo en e
 
   Para hacer peticiones AJAX se usa npm install --save axios y se importa en el componente a usar 
   con import axios from 'axios';
+
+  la libreria de fecha hay que descargar la libreria npm install --save react-moment y tambien el moment para que funcione
