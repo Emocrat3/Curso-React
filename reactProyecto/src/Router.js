@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import SeccionPruebas from './components/SeccionPruebas';
 import MiComponente from './components/MiComponente';
 import Peliculas from './components/Peliculas';
 import Home from './components/Home';
@@ -13,6 +12,10 @@ import Error from './components/Error';
 import Blog from './components/Blog';
 import Formulario from './components/Formulario';
 import Search from './components/Search';
+import Articles from './components/Articles';
+import Article from './components/Article';
+import CreateArticle from './components/CreateArticle';
+
 
 
 class Router extends Component {
@@ -24,25 +27,19 @@ class Router extends Component {
 
                 <Header />
 
-               
-
-               
-
 
                     {/* Configurar rutas y paginas */}
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/home" component={Home} />
                         <Route exact path="/blog" component={Blog} />
-                        <Route exact path="/blog/articulo/:id" render={() => (
-                            <h1>pagina individual del articulo</h1>
-                        )
-                        
-                        } />
+                        <Route exact path="/blog/articulo/:id" component={Article} />
+                        <Route exact path="/blog/crear" component={CreateArticle} />
+
                         <Route exact path="/blog/busqueda/:search" component={Search} />
                         <Route exact path="/formulario" component={Formulario}/>
                         <Route exact path="/peliculas" component={Peliculas}/>
-                        <Route exact path="/redirect/:search" render= {
+                        <Route exact path="/redirect:search" render= {
                             (props) => {
                                 var search = props.match.params.search;
                                 return (
@@ -53,31 +50,7 @@ class Router extends Component {
 
 
                         <Route exact path="/segunda-ruta" component={MiComponente} />
-                        <Route exact path="/pruebas/:nombre/:apellidos?" render={(props) => {
-
-                            var nombre = props.match.params.nombre;
-                            var apellidos = props.match.params.apellidos;
-
-                            return (
-                                <div id="content">
-                                    <h1 className="subheader">Página de pruebas</h1>
-                                    <h2>
-                                        {nombre && !apellidos &&
-                                            <React.Fragment>{nombre}</React.Fragment>
-                                        }
-
-                                        {nombre && apellidos &&
-                                            <React.Fragment>{nombre} {apellidos}</React.Fragment>
-
-                                        }
-
-                                    </h2>
-                                </div>
-                            );
-                        }
-                        } />
-
-
+                        
 
                         <Route component={Error} />
                     </Switch>

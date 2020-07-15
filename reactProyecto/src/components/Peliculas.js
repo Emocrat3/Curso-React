@@ -49,9 +49,9 @@ class Peliculas extends Component {
     componentWillMount() {
         this.setState({
             peliculas: [
-                { titulo: 'Mi vecino Totoro', image: 'https://i.ytimg.com/vi/qMZFau7LZUA/maxresdefault.jpg' },
-                { titulo: 'El castillo ambulante', image: 'https://i.ytimg.com/vi/kjV5-_Z_Uys/maxresdefault.jpg' },
-                { titulo: 'La princesa Mononoke', image: 'https://elbauldelasopiniones.files.wordpress.com/2014/03/princesse_mononoke_front1.jpg' }
+                { titulo: 'Mi vecino Totoro', image: 'https://i.ytimg.com/vi/qMZFau7LZUA/maxresdefault.jpg', link: 'https://www.netflix.com/cl/title/60032294' },
+                { titulo: 'El castillo ambulante', image: 'https://i.ytimg.com/vi/kjV5-_Z_Uys/maxresdefault.jpg', link: 'https://www.netflix.com/cl/title/70028883'},
+                { titulo: 'La princesa Mononoke', image: 'https://elbauldelasopiniones.files.wordpress.com/2014/03/princesse_mononoke_front1.jpg', link: 'https://www.netflix.com/cl/title/28630857' }
             ],
             nombre: 'Arthuro Gomez',
             favorita: {}

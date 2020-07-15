@@ -129,3 +129,5 @@ El onChange es para ver de forma reactiva los cambios que se hacen. ejemplo en e
   con import axios from 'axios';
 
   la libreria de fecha hay que descargar la libreria npm install --save react-moment y tambien el moment para que funcione
+El link se utiliza asi  <Link to={'/blog/crear'} className="btn btn-success">Crear artículo</Link> para al dar click redireccione
+a esta ruta que esta creada en mis rutas.

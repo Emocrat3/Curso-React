@@ -20,7 +20,7 @@ class Articles extends Component {
 
         if(home === 'true'){
             this.getLastArticles();
-        } else if(search && search != null && search != undefined) {
+        } else if(search && search !== null && search !== undefined) {
             this.getArticlesBySearch(search);
         } else {
             this.getArticles();
@@ -68,19 +68,17 @@ class Articles extends Component {
     
 
     render() {
-        console.log(this.state.articles)
         if (this.state.articles.length >= 1) {
 
             var listArticles = this.state.articles.map((article) => {
                 return (
-                    <article className="article-item" id="article-template">
+                    <article key={article._id} className="article-item" id="article-template">
                         <div className="image-wrap">
                             {article.image !== null ? (
                                 <img src={this.url+'get-image/'+article.image} alt={article.title} />
                             ) : (
                                 <img src={ImageDefault} alt={article.title} />
                             )
-
                             }
                             
                         </div>
@@ -89,7 +87,7 @@ class Articles extends Component {
                         <span className="date">
                             <Moment locale="es" fromNow>{article.date}</Moment>
                     </span>
-                        <Link to={'/blog/articulo'+article._id}>Leer más</Link>
+                        <Link to={'/blog/articulo/'+article._id}>Leer más</Link>
 
                         <div className="clearfix"></div>
                     </article>
