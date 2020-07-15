@@ -69,17 +69,6 @@ class Article extends Component {
                     swal("Tranquilo, no se ha borrado nada!");
                 }
             });
-
-
-        axios.delete(this.url + 'article/' + id)
-            .then(res => {
-
-                this.setState({
-                    article: res.data.article,
-                    status: 'deleted'
-                });
-
-            });
     }
 
     render() {
