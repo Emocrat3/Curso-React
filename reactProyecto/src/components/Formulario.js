@@ -55,6 +55,7 @@ class Formulario extends Component {
                 <div className="center">
                     <div id="content">
                         <h1 className="subheader">Formulario</h1>
+                        <p>Estos datos se guardan en la base de datos.</p>
                         {/*Mostrar datos del formulario*/}
                         {
                             this.state.user.nombre &&

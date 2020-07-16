@@ -5,20 +5,16 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
-import MiComponente from './components/MiComponente';
 import Peliculas from './components/Peliculas';
 import Home from './components/Home';
 import Error from './components/Error';
 import Blog from './components/Blog';
 import Formulario from './components/Formulario';
 import Search from './components/Search';
-import Articles from './components/Articles';
 import Article from './components/Article';
 import CreateArticle from './components/CreateArticle';
 import EditArticle from './components/EditArticle';
-
-
-
+import Musica from './components/Musica';
 
 class Router extends Component {
 
@@ -51,7 +47,7 @@ class Router extends Component {
                         } />
 
 
-                        <Route exact path="/segunda-ruta" component={MiComponente} />
+                        <Route exact path="/musica" component={Musica} />
                         
 
                         <Route component={Error} />

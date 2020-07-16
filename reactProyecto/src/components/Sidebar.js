@@ -33,6 +33,12 @@ class Sidebar extends Component {
         return (
 
             <aside id="sidebar">
+
+                <div id="nav-blog" className="sidebar-item">
+                    <h3>Personas que han visitado la web</h3>
+                    <img src="https://counter3.stat.ovh/private/contadorvisitasgratis.php?c=yawhq6c5gsrpj91ghmuwmbgl9kskx4a6"  title="Contador de usuarios" alt="Contador de usuarios" />
+                </div>
+
                 {this.props.blog === "true" &&
                     <div id="nav-blog" className="sidebar-item">
                         <h3>Puedes hacer esto</h3>
